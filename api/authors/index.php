@@ -26,6 +26,9 @@ $db = $database->connect();
 // Instantiate author object
 $theAuthor = new Author($db);
 
+// Get data from user input
+$data = file_get_contents('php://input');
+
 // require the proper file based on user method ('GET, PUT, POST, DELETE)
 switch ($method) {
     case 'GET': isset($_GET['id']) ? require 'read_single.php' : require 'read.php'; break;

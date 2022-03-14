@@ -1,14 +1,13 @@
 <?php
 
-$data = file_get_contents('php://input');
-echo $data;
+
 // Ensure author name is provided
-if (!isset($_GET['author'])) {
+if (!isset($data['author'])) {
     echo json_encode(
         array('message' => 'Missing Required Parameters')
     );
 } else {
-    $theAuthor->name = $_GET['author'];
+    $theAuthor->name = $data['author'];
     if ($theAuthor->create()) {
         echo json_encode(
             array(
