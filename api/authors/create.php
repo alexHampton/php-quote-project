@@ -1,5 +1,7 @@
 <?php
 
+echo $data;
+echo $data['author'];
 // Ensure author name is provided
 if ($data['author'] == null) {
     echo json_encode(
