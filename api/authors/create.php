@@ -1,6 +1,7 @@
 <?php
 
-
+$data = file_get_contents('php://input');
+echo $data;
 // Ensure author name is provided
 if (!isset($_GET['author'])) {
     echo json_encode(
