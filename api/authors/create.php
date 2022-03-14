@@ -1,7 +1,7 @@
 <?php
 
 // Ensure author name is provided
-if (!($data['author'])) {
+if ($data['author'] == null) {
     echo json_encode(
         array('message' => 'Missing Required Parameters')
     );
