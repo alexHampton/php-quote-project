@@ -3,8 +3,10 @@
 if (!property_exists($data, 'quote') || !property_exists($data, 'authorId') || !property_exists($data, 'categoryId')) {
     missingParams();
 } else {
+    // Create Author and Category objects based on ids provided
     $auth = new Author($db);
     $cat = new Category($db);
+    // ensure authorId and categoryId is found in db
     if (!isValid($data->authorId, $auth)) {
         notFound("author");
     } else if (!isValid($data->categoryId, $cat)) {
