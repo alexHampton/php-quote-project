@@ -28,3 +28,5 @@ if (!property_exists($data, 'quote') || !property_exists($data, 'authorId') || !
         }
     }
 }
+
+exit();

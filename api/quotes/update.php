@@ -37,5 +37,5 @@ if (!property_exists($data, 'id') || !property_exists($data, 'quote') || !proper
 
     }
 }
-
+exit();
 ?>

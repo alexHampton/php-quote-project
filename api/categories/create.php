@@ -18,5 +18,5 @@ if (!property_exists($data, 'category')) {
     }
 }
 
-
+exit();
 ?>

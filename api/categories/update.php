@@ -27,5 +27,5 @@ if (!property_exists($data, 'id') || !property_exists($data, 'category')) {
         notFound("category");
     }    
 }
-
+exit();
 ?>

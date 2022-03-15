@@ -20,5 +20,5 @@ if (!property_exists($data, 'id')) {
     }
     
 }
-
+exit();
 ?>

@@ -18,4 +18,6 @@ if (!property_exists($data, "author")) {
     }
 }
 
+exit();
+
 ?>

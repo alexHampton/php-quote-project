@@ -26,3 +26,5 @@ if (!property_exists($data, 'id') || !property_exists($data, 'author')) {
         notFound("author");
     }    
 }
+
+exit();
