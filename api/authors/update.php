@@ -2,16 +2,14 @@
 
 // make sure id and author are provided, 
 // if not, return JSON 'Missing Required Parameters'
-if (!isset($_GET['id']) || !isset($_GET['author'])) {
-    echo json_encode(
-        array('message' => 'Missing Required Parameters')
-    );
+if (!property_exists($data, 'id') || !property_exists($data, 'author')) {
+    missingParams();
 } else {
 
     // Ensure id is found in db. 
-    if (isValid($_GET['id'], $theAuthor)) {
+    if (isValid($data->id, $theAuthor)) {
         // Update author
-        $theAuthor->name = $_GET['author'];
+        $theAuthor->name = $data->author;
 
         // Update author
         if ($theAuthor->update()) {

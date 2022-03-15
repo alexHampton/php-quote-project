@@ -1,17 +1,15 @@
 <?php
 
 // Ensure author name is provided
-if (!isset($_GET['id'])) {
-    echo json_encode(
-        array('message' => 'Missing Required Parameters')
-    );
+if (!property_exists($data, "id")) {
+    missingParams();
 } else {
     // Ensure id is found in db
-    if (isValid($_GET['id'], $theAuthor)) {
+    if (isValid($data->id, $theAuthor)) {
         if ($theAuthor->delete()) {
             echo json_encode(
                 array(
-                    'id' => $_GET['id']
+                    'id' => $data->id
                 )
             );
         } else {

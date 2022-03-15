@@ -1,17 +1,16 @@
 <?php
 
+
 // make sure id and category are provided, 
 // if not, return JSON 'Missing Required Parameters'
-if (!isset($_GET['id']) || !isset($_GET['category'])) {
-    echo json_encode(
-        array('message' => 'Missing Required Parameters')
-    );
+if (!property_exists($data, 'id') || !property_exists($data, 'category')) {
+    missingParams();
 } else {
 
     // Ensure id is found in db. 
-    if (isValid($_GET['id'], $cat)) {
+    if (isValid($data->id, $cat)) {
         // Update category
-        $cat->name = $_GET['category'];
+        $cat->name = $data->category;
 
         // Update category in db
         if ($cat->update()) {

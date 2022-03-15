@@ -2,12 +2,10 @@
 
 
 // Ensure category name is provided
-if (!isset($_GET['category'])) {
-    echo json_encode(
-        array('message' => 'Missing Required Parameters')
-    );
+if (!property_exists($data, 'category')) {
+    missingParams();
 } else {
-    $cat->name = $_GET['category'];
+    $cat->name = $data->category;
     if ($cat->create()) {
         echo json_encode(
             array(

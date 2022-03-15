@@ -1,15 +1,17 @@
 <?php
 
 // Ensure category name is provided
-if (!isset($_GET['id'])) {
-    echo json_encode(
-        array('message' => 'Missing Required Parameters')
-    );
+if (!property_exists($data, 'id')) {
+    missingParams();
 } else {
     // Ensure id is found in db
-    if (isValid($_GET['id'], $cat)) {
+    if (isValid($data->id, $cat)) {
         if ($cat->delete()) {
-            success("Category", "Deleted");
+            echo json_encode(
+                array(
+                    'id' => $data->id
+                )
+            );
         } else {
             fail("Category", "Deleted");
         }

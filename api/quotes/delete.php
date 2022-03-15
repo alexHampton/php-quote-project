@@ -1,15 +1,17 @@
 <?php
 
 // Ensure id is provided
-if (!isset($_GET['id'])) {
-    echo json_encode(
-        array('message' => 'Missing Required Parameters')
-    );
+if (!property_exists($data, 'id')) {
+    missingParams();
 } else {
     // Ensure id is found in db
-    if (isvalid($_GET['id'], $quo)) {
+    if (isvalid($data->id, $quo)) {
         if ($quo->delete()) {
-            success("Quote", "Deleted");
+            echo json_encode(
+                array(
+                    'id' => $data->id
+                )
+            );
         } else {
             fail("Quote", "Deleted");
         }

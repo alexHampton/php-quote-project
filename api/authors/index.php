@@ -11,6 +11,7 @@ include_once '../../helperFunctions/isValid.php';
 include_once '../../helperFunctions/notFound.php';
 include_once '../../helperFunctions/success.php';
 include_once '../../helperFunctions/fail.php';
+include_once '../../helperFunctions/missingParams.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 if ($method === 'OPTIONS') {
@@ -26,8 +27,8 @@ $db = $database->connect();
 // Instantiate author object
 $theAuthor = new Author($db);
 
-// Get data from user input
-$data = file_get_contents('php://input');
+// Get raw data from user
+$data = json_decode(file_get_contents('php://input'));
 
 // require the proper file based on user method ('GET, PUT, POST, DELETE)
 switch ($method) {

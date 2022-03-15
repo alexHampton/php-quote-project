@@ -11,6 +11,7 @@ include_once '../../helperFunctions/isValid.php';
 include_once '../../helperFunctions/notFound.php';
 include_once '../../helperFunctions/success.php';
 include_once '../../helperFunctions/fail.php';
+include_once '../../helperFunctions/missingParams.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 if ($method === 'OPTIONS') {
@@ -25,6 +26,9 @@ $db = $database->connect();
 
 // Instantiate category object
 $cat = new Category($db);
+
+// Get raw data from user
+$data = json_decode(file_get_contents('php://input'));
 
 // require the proper file based on user method ('GET, PUT, POST, DELETE)
 switch ($method) {

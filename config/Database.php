@@ -2,7 +2,7 @@
     class Database {
         // DB parameters
         private $host = 'kutnpvrhom7lki7u.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
-        private $db_name = 'zk9mdu0w7i3xzp6a';//getenv('DB_NAME');
+        private $db_name = 'zk9mdu0w7i3xzp6a';
         private $username;
         private $password;
         private $conn;

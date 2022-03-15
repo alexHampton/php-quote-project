@@ -1,21 +1,18 @@
 <?php
-$userData = $_GET;
 // Ensure quote, authorId, and category Id are provided
-if (!isset($userData['quote']) || !isset($userData['authorId']) || !isset($userData['categoryId'])) {
-    echo json_encode(
-        array('message' => 'Missing Required Parameters')
-    );
+if (!property_exists($data, 'quote') || !property_exists($data, 'authorId') || !property_exists($data, 'categoryId')) {
+    missingParams();
 } else {
     $auth = new Author($db);
     $cat = new Category($db);
-    if (!isValid($userData['authorId'], $auth)) {
+    if (!isValid($data->authorId, $auth)) {
         notFound("author");
-    } else if (!isValid($userData['categoryId'], $cat)) {
+    } else if (!isValid($data->categoryId, $cat)) {
         notFound("category");
     } else {
-        $quo->theQuote = $userData['quote'];
-        $quo->authorId = $userData['authorId'];
-        $quo->categoryId = $userData['categoryId'];
+        $quo->theQuote = $data->quote;
+        $quo->authorId = $data->authorId;
+        $quo->categoryId = $data->categoryId;
 
         if ($quo->create()) {
             echo json_encode(
